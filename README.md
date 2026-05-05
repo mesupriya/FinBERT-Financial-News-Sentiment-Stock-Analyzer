@@ -7,7 +7,7 @@
 
 A modern, machine learning-powered web application that analyzes real-time financial news sentiment and correlates it with stock price movements.
 
-🌍 **Live Application:** [View the Streamlit App Here](#) *(You can deploy this for free on [Streamlit Cloud](https://streamlit.io/cloud) and link it here)*
+🌍 **Live Application:** [View the Streamlit App Here](https://finbert-financial-news-sentiment-stock-analyzer.streamlit.app/)
 
 ## 🚀 Overview
 
