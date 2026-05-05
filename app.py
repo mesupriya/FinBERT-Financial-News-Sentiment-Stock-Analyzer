@@ -1,7 +1,7 @@
 import streamlit as st
 import yfinance as yf
 import pandas as pd
-from transformers import pipeline
+from transformers.pipelines import pipeline
 import plotly.graph_objects as go
 
 st.set_page_config(page_title="FinBERT Financial Sentiment Analyzer", layout="wide")
