@@ -4,14 +4,14 @@ import pandas as pd
 from transformers import pipeline
 import plotly.graph_objects as go
 
-st.set_page_config(page_title="Financial Sentiment Analyzer", layout="wide")
+st.set_page_config(page_title="FinBERT Financial Sentiment Analyzer", layout="wide")
 
 @st.cache_resource
 def load_sentiment_model():
     # FinBERT is specifically trained on financial text
     return pipeline("sentiment-analysis", model="ProsusAI/finbert")
 
-st.title("📈 Financial News Sentiment & Stock Analyzer")
+st.title("📈 FinBERT Financial News Sentiment & Stock Analyzer")
 st.markdown("Analyze recent news sentiment for a stock and see its recent price movements.")
 
 ticker_symbol = st.text_input("Enter Stock Ticker (e.g., AAPL, TSLA, MSFT)", "AAPL").upper()

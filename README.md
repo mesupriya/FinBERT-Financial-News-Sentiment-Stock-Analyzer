@@ -1,4 +1,4 @@
-# 📈 Financial News Sentiment & Stock Analyzer
+# 📈 FinBERT Financial News Sentiment & Stock Analyzer
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.32.2-FF4B4B.svg?style=flat&logo=Streamlit&logoColor=white)
