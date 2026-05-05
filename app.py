@@ -81,6 +81,43 @@ if ticker_symbol:
                     col2.metric("Neutral News", neu_count)
                     col3.metric("Negative News", neg_count)
                     
+                    st.markdown("---")
+                    st.markdown("### 🤖 AI Trading Signal")
+                    
+                    total_news = len(df_news)
+                    sentiment_score = 0
+                    if total_news > 0:
+                        sentiment_score = (pos_count - neg_count) / total_news
+                    
+                    # Calculate simple price momentum (last 5 days vs today)
+                    price_change = 0
+                    if len(hist_data) >= 5:
+                        current_price = hist_data['Close'].iloc[-1]
+                        past_price = hist_data['Close'].iloc[-5]
+                        price_change = (current_price - past_price) / past_price
+                    
+                    signal = "HOLD 😐"
+                    reasoning = ""
+                    
+                    if sentiment_score > 0.2 and price_change > 0:
+                        signal = "STRONG BUY 🚀"
+                        reasoning = "Both AI news sentiment and recent price momentum are highly positive."
+                    elif sentiment_score > 0.1:
+                        signal = "BUY 📈"
+                        reasoning = "AI news sentiment is generally positive, suggesting a favorable outlook."
+                    elif sentiment_score < -0.2 and price_change < 0:
+                        signal = "STRONG SELL 🚨"
+                        reasoning = "Both AI news sentiment and recent price momentum are heavily negative."
+                    elif sentiment_score < -0.1:
+                        signal = "SELL 📉"
+                        reasoning = "AI news sentiment is leaning negative. Caution is advised."
+                    else:
+                        signal = "HOLD 😐"
+                        reasoning = "AI news sentiment is mixed or neutral. No clear directional signal."
+                        
+                    st.info(f"**Recommendation:** {signal}  \n**Reasoning:** {reasoning}")
+                    st.markdown("---")
+                    
                     # Apply color coding to sentiment
                     def color_sentiment(val):
                         color = 'green' if val == 'positive' else 'red' if val == 'negative' else 'gray'
