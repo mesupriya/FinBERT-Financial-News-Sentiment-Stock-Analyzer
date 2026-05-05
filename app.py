@@ -50,9 +50,14 @@ if ticker_symbol:
                 
                 news_data = []
                 for article in news:
-                    title = article.get('title', '')
-                    link = article.get('link', '')
-                    publisher = article.get('publisher', '')
+                    content = article.get('content', article)
+                    title = content.get('title', '')
+                    
+                    url_obj = content.get('clickThroughUrl', {})
+                    link = url_obj.get('url', '') if isinstance(url_obj, dict) else article.get('link', '')
+                        
+                    provider = content.get('provider', {})
+                    publisher = provider.get('displayName', '') if isinstance(provider, dict) else article.get('publisher', '')
                     
                     if title:
                         # Analyze sentiment of the headline
